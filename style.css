@@ -1,0 +1,41 @@
+.tete{
+    background:url(Banner.jpg);
+    background-size: cover;
+    height: 400px;
+    padding: 100px;
+
+
+    
+}
+.centre{
+    text-align: center;
+}
+
+
+.lien{
+    padding-left: 800px;
+    margin-top: 10px;
+    
+
+}
+.trois-img{
+    justify-content: center;
+    display:flex;
+    gap: 30px;
+    
+    
+}
+
+.parti2{
+    text-align: center;
+    display:flex ;
+    gap: 10px;
+
+}
+
+.parti3{
+    background-image: url(bas.jpg);
+    height: 400px;
+    text-align: center;
+    background-size: cover;
+}
