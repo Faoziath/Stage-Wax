@@ -1,27 +1,33 @@
 .tete{
-    background:url(Banner.jpg);
+    background:url(Image/Banner.jpg);
     background-size: cover;
     height: 400px;
     padding: 100px;
+    margin-top: -5em;
 
-
+}
+a{
+    text-decoration: none;
+    color: black;
+}
+.lien{
+    
+    
     
 }
+.liens{
+    display: flex;
+    justify-content: space-between;
+}
+
 .centre{
     text-align: center;
-}
-
-
-.lien{
-    padding-left: 800px;
-    margin-top: 10px;
-    
-
 }
 .trois-img{
     justify-content: center;
     display:flex;
-    gap: 30px;
+    gap: 50px;
+    margin-top: 5em;
     
     
 }
@@ -34,8 +40,23 @@
 }
 
 .parti3{
-    background-image: url(bas.jpg);
+    background-image: url(./Image/bas.jpg);
     height: 400px;
+    margin-top: 10em;
     text-align: center;
     background-size: cover;
+}
+
+.bas{
+    display: flex;
+    justify-content: space-between;
+}
+
+.dernier{
+    display: flex;
+    justify-content: space-around;
+    
+}
+.lienb{
+    padding-top: 1em;
 }
