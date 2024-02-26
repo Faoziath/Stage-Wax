@@ -1,0 +1,9 @@
+img{
+    width: 150px;
+    height: 150px;
+}
+
+.A,.B,.C,.D{
+    display: flex;
+    gap: 10px;
+}
