@@ -1,23 +1,62 @@
 .tete{
     background:url(Image/Banner.jpg);
     background-size: cover;
-    height: 400px;
-    padding: 100px;
-    margin-top: -5em;
-
+    background-repeat: no-repeat;
+    height: 600px;
+    padding-top: 30px;
+    padding-left: 100px;
+    padding-right: 100px;
+    justify-content: center;
 }
+
 a{
     text-decoration: none;
-    color: black;
+    color: #000000;
+    font-size: 17px;
+}
+
+
+.l1{
+    font-size: 60px;
+    color: #2c541d;
+}
+
+.l2{
+    color: #050505;
+    
+}
+
+button{
+    background-color:  #74a84a;
+    color: white;
+    height: 50px;
+    width: 200px;
+    font-size: 20px;
+}
+
+
+
+.lien{
+    display: flex;
+    gap: 30px;
+    padding-right: 50px;
+}
+
+strong{
+    font-size: 20px;
 }
 
 .liens{
     display: flex;
     justify-content: space-between;
+    gap: 60px;
+
 }
 
 .centre{
     text-align: center;
+    margin-top: 100px;
+    font-size: 30px;
 }
 .trois-img{
     justify-content: center;

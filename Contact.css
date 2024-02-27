@@ -18,3 +18,14 @@ strong{
 a{
     margin-top: 100px;
 }
+
+button{
+    color: white;
+    font-size: 20px;
+    background-color: green;
+    height: 50px;
+}
+
+.parti2{
+    display: flex;
+}
