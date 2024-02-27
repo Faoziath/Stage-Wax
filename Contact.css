@@ -1,0 +1,20 @@
+.tete{
+    background-image: url(Image/Banner.jpg);
+    background-size: cover;
+    height: 400px;
+    padding: 100px;
+    margin-top: -5em;
+    
+}
+strong{
+    color: green;
+    font-size: 90px;
+    text-align: center;
+    padding: 100px;
+
+}
+
+
+a{
+    margin-top: 100px;
+}

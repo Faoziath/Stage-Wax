@@ -10,11 +10,7 @@ a{
     text-decoration: none;
     color: black;
 }
-.lien{
-    
-    
-    
-}
+
 .liens{
     display: flex;
     justify-content: space-between;
