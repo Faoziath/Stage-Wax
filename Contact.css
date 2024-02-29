@@ -28,4 +28,6 @@ button{
 
 .parti2{
     display: flex;
+    gap: 700px;
+    text-align: center;
 }
