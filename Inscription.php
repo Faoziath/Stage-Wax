@@ -1,32 +1,41 @@
 <?php
-// Vérification si les données sont envoyées via POST
+// Vérification si le formulaire a été soumis
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Récupération des données du formulaire
     $nom = htmlspecialchars($_POST["nom"]);
-    $Prenom = htmlspecialchars($_POST["Prenom"]);
+    $prenom= htmlspecialchars($_POST["prenom"]);
     $sexe = htmlspecialchars($_POST["sexe"]);
     $email = htmlspecialchars($_POST["email"]);
     $contact = htmlspecialchars($_POST["contact"]);
-    $mot_de_passe = htmlspecialchars($_POST["mot_de_passe"]);
-    $confirme= htmlspecialchars($_POST["ConfirmerLeMotDePasse"]);
-    
+    $motDePasse = password_hash($_POST["motDePasse"], PASSWORD_DEFAULT);
+    $confirmerLeMotDePasse= htmlspecialchars($_POST["confirmerLeMotDePasse"]); // Hashage du mot de passe
 
-    // Relier à la base de données
-    $conn = new mysqli($nom,$Prenom,$sexe,$email,$contact,$mot_de_pass,$confirme);
+    // Connexion à la base de données (remplacer les valeurs selon votre configuration)
+    $servername = "localhost";
+    $username = "root";
+    $password = "";
+    $dbname = "inscription";
+    $conn = new mysqli($servername, $username, $password, $dbname);
 
+    // Vérification de la connexion
+    if ($conn->connect_error) {
+        die("La connexion a échoué: " . $conn->connect_error);
+    }
+    else {
+        echo "okkk";
+    }
 
-    // Affichage des données récupérées (à des fins de démonstration)
-    echo "Nom: " . $nom . "<br>";
-    echo "Penom: " . $Prenom . "<br>";
-    echo "E-mail: " . $sexe . "<br>";
-    echo "sexe: " . $email . "<br>";
-    echo "E-mail: " . $contact . "<br>";
-    echo "contact: " . $contact . "<br>";
-    // Ne jamais afficher le mot de passe en clair, ceci est à des fins de démonstration uniquement
-    echo "Mot de passe: " . $mot_de_passe . "<br>";
-    echo "Confirme: " . $confirme . "<br>";
-    
-    // Ajouter ici le code pour insérer les données dans une base de données ou effectuer d'autres actions nécessaires
-    // Assurez-vous de sécuriser le stockage du mot de passe en utilisant des techniques telles que le hachage.
+    // Requête SQL pour insérer les données dans la base de données
+    $sql = "INSERT INTO utilisateurs (nom, prenom,sexe,email,contact,motDePasse,confirmerLeMotDePasse) 
+    VALUES ('$nom','$prenom','$sexe','$email','$contact','$motDePasse','$confirmerLeMotDePasse')";
+
+    if ($conn->query($sql) === TRUE) {
+        echo "Inscription réussie";
+    } else {
+        echo "Erreur lors de l'inscription: " . $conn->error;
+    }
+
+    // Fermeture de la connexion à la base de données
+    $conn->close();
 }
 ?>
