@@ -3,12 +3,12 @@
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Récupération des données du formulaire
     $nom = htmlspecialchars($_POST["nom"]);
-    $prenom= htmlspecialchars($_POST["prenom"]);
+    $prenom = htmlspecialchars($_POST["prenom"]);
     $sexe = htmlspecialchars($_POST["sexe"]);
     $email = htmlspecialchars($_POST["email"]);
     $contact = htmlspecialchars($_POST["contact"]);
     $motDePasse = password_hash($_POST["motDePasse"], PASSWORD_DEFAULT);
-    $confirmerLeMotDePasse= htmlspecialchars($_POST["confirmerLeMotDePasse"]); // Hashage du mot de passe
+    $confirmerLeMotDePasse = htmlspecialchars($_POST["confirmerLeMotDePasse"]); // Hashage du mot de passe
 
     // Connexion à la base de données (remplacer les valeurs selon votre configuration)
     $servername = "localhost";
@@ -20,8 +20,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Vérification de la connexion
     if ($conn->connect_error) {
         die("La connexion a échoué: " . $conn->connect_error);
-    }
-    else {
+    } else {
         echo "okkk";
     }
 
@@ -38,4 +37,3 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Fermeture de la connexion à la base de données
     $conn->close();
 }
-?>
