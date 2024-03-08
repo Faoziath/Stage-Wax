@@ -1,45 +1,66 @@
 <?php
+$servername = "localhost";
+$dbname = "Inscrit";
+$user = "root";
+$password = "";
 
-error_reporting(E_ALL);
-ini_set("display_errors", 1);
+try {
+    $conn = new PDO ("mysql:host=$servername; dbname=$Inscrit; charset=utf8", "$users", "$password");
+} catch (Exception $e) {
+    echo "Erreur : ".$e->getmessage();
+}
 
+if (isset($_POST['ok'])) {
+  $nom = htmlspecialchars($_POST['nom']);
+  $prenom = htmlspecialchars($_POST['prenom']);
+  $email = htmlspecialchars($_POST['email']);
+  $contact = htmlspecialchars($_POST['contact']);
+  $password = htmlspecialchars($_POST['password']);
+  
+  if (isset($nom, $prenom,$email,$contact,$password) and !empty($_POST['nom']) and !empty($_POST['prenom']) and !empty($_POST['email']) and !empty($_POST['contact']) and !empty($_POST['password'])) {
+
+    // VERIFIONS SI L'ARTICLE EXISTE DEJA
+    $reqSelect = $conn->prepare('SELECT count(*) as count FROM users WHERE email = ?');
+    $reqSelect->execute(array($nom));
+    $resultat = $reqSelect->fetch();
+
+    if ($resultat['count'] > 0) {
+      echo "Se email existe";
+    } else {
+
+            $sql = "INSERT INTO users(nom,prenom,email,contact,password) VALUES (?,?,?,?,?)";
+            $req = $conn->prepare($sql);
+            $req->execute(array($nom, $prenom, $email,$contact,$password));
+            echo ' Article publié !';
+    }
+
+  } else {
+    echo "Remplissez tout les champs.";
+  }
+}
 ?>
 
-
-
-
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Inscription</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ok</title>
 </head>
 <body>
 
-<form action="Inscrit.php" method="post">
-
- <h2>INSCRIPTIONS</h2>
-
-<label for="nom">Entrer votre nom</label> <br><br>
-<input type="text" id="nom"  name="nom"> <br><br>
-
-<label for="prenom">Entrer votre prenom</label><br><br>
-<input type="text" id="prenom" name="prenom"> <br><br>
-
-<label for="email">Entrer votre email</label><br><br>
-<input type="text" id="email"  name="email"> <br><br>
-
-<label for="contact">Entrer votre contact</label><br><br>
-<input type="text"  id="contact" name="contact"> <br><br>
-
-<label for="pass">Entrer votre mot de passe</label><br><br>
-<input type="text"  id="passworde" name="passworde"> <br><br>
-
-
-
-<input type="submit" id="OK" value="M'inscrire" name="OK" >
-</form>
-	
+  <form method="post">
+    <label>Nom</label>
+    <input type="text" name="nom"><br><br>
+    <label>Prenom</label>
+    <input type="text" name="prenom"><br><br>
+    <label>email</label>
+    <input type="email" name="email"><br><br>
+    <label>contact</label>
+    <input type="text" name="contact"><br><br>
+    <label>Mot de passe</label>
+    <input type="password" name="password"><br><br>
+    <input type="submit" name="ok">
+  </form>
 </body>
 </html>
